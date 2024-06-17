@@ -28,6 +28,10 @@ export type ScreenParamList = {
   [screenNames.resetPassword]: undefined;
 };
 
+export const screenTitle = {
+  [screenNames.profile]: 'Profile',
+} as const;
+
 export type ScreenParamType = ScreenParamList[keyof ScreenParamList];
 
 export type ScreenConfiguration<

@@ -7,7 +7,7 @@ import Login from './Login/Login';
 import Signup from './Signup/Signup';
 import {colors} from '../utill';
 import RecoverPassword from './RecoverPassword/RecoverPassword';
-import {ScreenConfiguration, screenNames} from './screenTypes';
+import {ScreenConfiguration, screenNames, screenTitle} from './screenTypes';
 import ResetPassword from './ResetPassword/ResetPassword';
 
 type ScreenConfigurations =
@@ -38,6 +38,11 @@ export const screenConfigurations = (): ScreenConfigurations[] => {
       name: screenNames.profile,
       component: Profile,
       auth: true,
+      options: {
+        headerTitle: screenTitle.profile,
+        headerShadowVisible: false,
+        headerStyle: {backgroundColor: colors.white},
+      },
     },
     {
       name: screenNames.createPost,
@@ -68,7 +73,6 @@ export const screenConfigurations = (): ScreenConfigurations[] => {
       name: screenNames.recoverPassword,
       component: RecoverPassword,
       options: {
-        headerShown: true,
         headerTitle: '',
         headerShadowVisible: false,
         headerStyle: {backgroundColor: colors.white},
