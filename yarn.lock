@@ -5777,7 +5777,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"invariant@npm:2.2.4, invariant@npm:^2.2.4":
+"invariant@npm:^2.2.4":
   version: 2.2.4
   resolution: "invariant@npm:2.2.4"
   dependencies:
@@ -8301,25 +8301,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-app-auth@npm:^7.2.0":
-  version: 7.2.0
-  resolution: "react-native-app-auth@npm:7.2.0"
-  dependencies:
-    invariant: 2.2.4
-    react-native-base64: 0.0.2
-  peerDependencies:
-    react-native: ">=0.63.0"
-  checksum: 68f6a5343210041ec8bf0018b12007c8c3700473d6a46f2a543b935190141b002d6beb0b451531cf35d0c51fd920f73d7a02ec99868b912ca1a5bd618cf987d7
-  languageName: node
-  linkType: hard
-
-"react-native-base64@npm:0.0.2":
-  version: 0.0.2
-  resolution: "react-native-base64@npm:0.0.2"
-  checksum: 696f6cad0e3ce26437275bcd791becaf597300d351a3ab2d7084fd42a177731bb9ab1e490534397ed35de4cd2a5a4385ee8d49bf5846069101b5ada98f132d23
-  languageName: node
-  linkType: hard
-
 "react-native-config@npm:^1.5.1":
   version: 1.5.1
   resolution: "react-native-config@npm:1.5.1"
@@ -8339,6 +8320,19 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 9d2999c58559f1e4f66d1baf2c3edeff96cf42027900850d94c6bbea24ac9715047ce69bf6e8a73b68aff4508cf35dd88ac494ad5905933286ef3b75cd123e30
+  languageName: node
+  linkType: hard
+
+"react-native-fbsdk-next@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "react-native-fbsdk-next@npm:13.0.0"
+  peerDependencies:
+    expo: ">=47.0.0"
+    react-native: ">=0.63.3"
+  peerDependenciesMeta:
+    expo:
+      optional: true
+  checksum: ba0cd96ad369b5607b27fad3cc49cdc58a3428a7c90343caac52af019fe43b8558b449edbb9a2dcf215d6280c985b7724e1a65ee5999f7532c97400124aebf3b
   languageName: node
   linkType: hard
 
@@ -9074,9 +9068,9 @@ __metadata:
     react: 18.2.0
     react-i18next: ^14.1.2
     react-native: 0.74.2
-    react-native-app-auth: ^7.2.0
     react-native-config: ^1.5.1
     react-native-encrypted-storage: ^4.0.3
+    react-native-fbsdk-next: ^13.0.0
     react-native-permissions: ^4.1.5
     react-native-safe-area-context: ^4.10.4
     react-native-screens: ^3.31.1

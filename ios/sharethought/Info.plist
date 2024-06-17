@@ -90,5 +90,20 @@
 		<string>Poppins-Thin.ttf</string>
 		<string>Poppins-ThinItalic.ttf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+	<dict>
+	<key>CFBundleURLSchemes</key>
+	<array>
+		<string>fb332086653267509</string>
+	</array>
+	</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>332086653267509</string>
+	<key>FacebookClientToken</key>
+	<string>3f7a33ea0ac6c36d66fea1ef0f637717</string>
+	<key>FacebookDisplayName</key>
+	<string>Share Thought</string>
 </dict>
 </plist>

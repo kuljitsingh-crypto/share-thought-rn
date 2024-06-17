@@ -12,8 +12,15 @@ import {
   PrimaryButton,
   SecondaryButton,
 } from '../../components';
-import {GoogleLoginUser, apiBaseUrl, colors, fonts} from '../../utill';
 import {
+  FacebookLoginAccesToken,
+  GoogleLoginUser,
+  apiBaseUrl,
+  colors,
+  fonts,
+} from '../../utill';
+import {
+  facebookUserLogin,
   googleUserLogin,
   selectLoginDetails,
   selectLoginErr,
@@ -48,6 +55,8 @@ const mapDispatchToProps = (dispatch: AppDispatchType) => ({
   onUserLogin: (params: {email?: string; password?: string}) =>
     dispatch(userLogin(params)),
   onGoogleUserLogin: (token: string | null) => googleUserLogin(token, dispatch),
+  onFacebookUserLogin: (token: string | null) =>
+    facebookUserLogin(token, dispatch),
 });
 
 type LoginProps = NativeStackScreenProps<ScreenParamList, 'login'>;
@@ -61,6 +70,7 @@ const Login = (props: LoginProps) => {
     loginDetails,
     onUserLogin,
     onGoogleUserLogin,
+    onFacebookUserLogin,
   } = useConnect(mapStateToProps, mapDispatchToProps);
 
   const handleOnSubmit = async (values: any) => {
@@ -73,6 +83,11 @@ const Login = (props: LoginProps) => {
 
   const handleGoogleLogin = async (user: GoogleLoginUser) => {
     await onGoogleUserLogin(user.idToken);
+    navigation.navigate(screenNames.home);
+  };
+
+  const handleFacebookLogin = async (accessToken: FacebookLoginAccesToken) => {
+    await onFacebookUserLogin(accessToken.accessToken);
     navigation.navigate(screenNames.home);
   };
 
@@ -159,29 +174,13 @@ const Login = (props: LoginProps) => {
         <View style={styles.dividerLine}></View>
         <FormatedMessage id="Login.orSeparator" style={styles.orSep} />
       </View>
-      {/* <SecondaryButton style={styles.socialBtn} onPress={openGoogleLoginModal}>
-        <Icon name="google" iconType="ant" color={colors.primaryDark} />
-        <FormatedMessage
-          id={'Login.continueWithGoogle'}
-          style={styles.socialBtnText}
-        />
-      </SecondaryButton>
-      <SecondaryButton style={styles.socialBtn}>
-        <Icon
-         
-          color={colors.primaryDark}
-        />
-        <FormatedMessage
-          id={'Login.continueWithFacebook'}
-          style={styles.socialBtnText}
-        />
-      </SecondaryButton> */}
       <GoogleSignInButton
         loginText={intl.formatMessage('Login.continueWithGoogle')}
         onSuccess={handleGoogleLogin}
       />
       <FacebookSignInButton
         loginText={intl.formatMessage('Login.continueWithFacebook')}
+        onSuccess={handleFacebookLogin}
       />
     </SafeAreaView>
   );

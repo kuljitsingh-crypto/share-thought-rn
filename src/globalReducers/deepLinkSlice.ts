@@ -154,30 +154,29 @@ const processDeepLinkByPathName = (
   dispatch: AppDispatchType,
   getState: GetStateType,
 ) => {
-  // const {url, origin} = params;
-  // const pathName = pathname(url);
-  // const queryParams = parse(url);
-  // console.log(pathName, url);
-  // switch (pathName) {
-  //   case 'email-verify':
-  //     verifyCurrentUser({
-  //       queryParams,
-  //       updateOptions: {origin},
-  //       dispatch,
-  //       getState,
-  //     });
-  //     break;
-  //   case 'reset-password':
-  //     resetPassword({queryParams, updateOptions: {origin}, dispatch, getState});
-  //     break;
-  //   default: {
-  //     updateProcessStatusAndRedirectPath(dispatch, {
-  //       path: screenNames.home,
-  //       origin: deepLinkOriginType.none,
-  //       shouldRedirect: false,
-  //     });
-  //   }
-  // }
+  const {url, origin} = params;
+  const pathName = pathname(url);
+  const queryParams = parse(url);
+  switch (pathName) {
+    case 'email-verify':
+      verifyCurrentUser({
+        queryParams,
+        updateOptions: {origin},
+        dispatch,
+        getState,
+      });
+      break;
+    case 'reset-password':
+      resetPassword({queryParams, updateOptions: {origin}, dispatch, getState});
+      break;
+    default: {
+      updateProcessStatusAndRedirectPath(dispatch, {
+        path: screenNames.home,
+        origin: deepLinkOriginType.none,
+        shouldRedirect: false,
+      });
+    }
+  }
 };
 
 export const processDeepLink = createCustomAsyncThunk(

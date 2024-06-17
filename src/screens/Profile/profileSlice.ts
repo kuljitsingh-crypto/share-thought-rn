@@ -3,6 +3,7 @@ import {ErrorType, FETCH_STATUS, FetchStatusValues} from '../../custom-config';
 import {
   apiBaseUrl,
   createCustomAsyncThunk,
+  facebookLogin,
   googleLogin,
   nativeFetch,
   storableError,
@@ -57,7 +58,11 @@ export const logOut = createCustomAsyncThunk(
       csrfToken,
     });
     if (currrentUser?.privateData.isThirdPartyLogin) {
-      await googleLogin.logout();
+      if (currrentUser.privateData.thirdPartyProvider === 'google') {
+        await googleLogin.logout();
+      } else if (currrentUser.privateData.thirdPartyProvider === 'facebook') {
+        await facebookLogin.logout();
+      }
     }
     dispatch(resetCurrentUserOnLogout());
 

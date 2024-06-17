@@ -62,6 +62,22 @@ export const googleUserLogin = async (
   return resp.data;
 };
 
+export const facebookUserLogin = async (
+  accessToken: string | null,
+  dispatch: AppDispatchType,
+) => {
+  if (accessToken === null) {
+    throw new Error('accessToken cannot be null.');
+  }
+  const url = `${apiBaseUrl()}/api/user/app/facebook-login`;
+  const data = {accessToken};
+  const resp = await nativeFetch.post(url, {body: data});
+  const {csrfToken} = resp.data;
+  dispatch(addCSRFToken(csrfToken));
+  await dispatch(fetchCurrentUser());
+  return resp.data;
+};
+
 const loginSlice = createSlice({
   name: 'login',
   initialState: initialState,
